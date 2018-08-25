@@ -1,0 +1,19 @@
+{
+  "name": "netflix-viewer",
+  "version": "0.1.0",
+  "main": "./main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "build": {
+    "linux": {
+      "target": [
+        "dir"
+      ]
+    }
+  },
+  "devDependencies": {
+    "electron": "2.0.8",
+    "electron-builder": "^20.28.2"
+  }
+}
