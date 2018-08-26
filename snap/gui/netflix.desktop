@@ -2,6 +2,6 @@
 Type=Application
 Name=Netflix Viewer
 Icon=${SNAP}/meta/gui/icon.png
-Categories=Entertainment;
+Categories=Entertainment
 Exec=netflix-viewer
 Terminal=false
