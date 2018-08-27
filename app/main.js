@@ -1,6 +1,7 @@
+
 const electron = require('electron');
-const { shell, app, BrowserWindow } = electron;
-const HOMEPAGE = 'https://www.netflix.com/'
+const { shell, app, BrowserView, BrowserWindow } = electron;
+const HOMEPAGE = 'https://www.google.com/'
 
 let mainWindow;
 
@@ -15,6 +16,14 @@ app.on('ready', () => {
     });
     window.setMenuBarVisibility(false);
     window.loadURL(HOMEPAGE);
+
+    let view = new BrowserView({
+    webPreferences: {
+                        nodeIntegration: false
+                    }
+    });
+
+    window.setBrowserView(view);
 
 
     window.on('closed', () => {
