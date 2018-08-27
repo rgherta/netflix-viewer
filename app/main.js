@@ -1,7 +1,7 @@
 
 const electron = require('electron');
 const { shell, app, BrowserView, BrowserWindow } = electron;
-const HOMEPAGE = 'https://www.google.com/'
+const HOMEPAGE = 'https://www.netflix.com/'
 
 let mainWindow;
 
