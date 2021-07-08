@@ -39,9 +39,11 @@ parts:
     - ELECTRON_GET_USE_PROXY: "true"
     
     override-build: |
+      GLOBAL_AGENT_HTTPS_PROXY=$https_proxy
+
       curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
       apt-get install -y nodejs
-
+    
       sudo npm install
       npm run dist
     
