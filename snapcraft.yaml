@@ -14,7 +14,7 @@ architectures:
     run-on: arm64
 license: GPL-3.0
 
-grade: stable 
+grade: devel 
 confinement: strict 
 base: core18
 

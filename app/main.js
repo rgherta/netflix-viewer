@@ -1,7 +1,7 @@
 
 const electron = require('electron');
 const { app, BrowserView, BrowserWindow } = electron;
-const HOMEPAGE = 'https://www.disneyplus.com/';
+const HOMEPAGE = 'https://www.netflix.com/';
 
 
     app.on('widevine-ready', () => {
