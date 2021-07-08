@@ -34,12 +34,10 @@ parts:
     # - libxshmfence-dev
      - libnss3
      - libnspr4
-
-    build-environment:
-    - ELECTRON_GET_USE_PROXY: "true"
     
     override-build: |
-      GLOBAL_AGENT_HTTPS_PROXY=$https_proxy
+      export GLOBAL_AGENT_HTTPS_PROXY=$https_proxy
+      export ELECTRON_GET_USE_PROXY=true
 
       curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
       apt-get install -y nodejs
