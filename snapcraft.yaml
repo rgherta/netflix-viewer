@@ -16,43 +16,48 @@ grade: devel
 confinement: strict 
 base: core18
 
+compression: lzo
+
 
 parts:
   netflix-viewer:
     source: app
     plugin: nil
+
+
+    build-snaps:
+    - node/14/stable
+  
     build-packages:
     - curl
     - git
 
     stage-packages:
-    # - libasound2
-    # - libgconf-2-4
-    # - libx11-xcb1
-    # - libxss1
-    # - libxtst6
-    # - libxshmfence-dev
      - libnss3
      - libnspr4
     
-    override-build: |
-      export GLOBAL_AGENT_HTTPS_PROXY=$https_proxy
-      export ELECTRON_GET_USE_PROXY=true
+            #export GLOBAL_AGENT_HTTPS_PROXY=$https_proxy
+      #export ELECTRON_GET_USE_PROXY=true
 
-      curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-      apt-get install -y nodejs
+    override-build: |
+      if [ -n "$http_proxy" ]; then
+          export ELECTRON_GET_USE_PROXY=1
+          export GLOBAL_AGENT_HTTP_PROXY="${http_proxy}"
+          export GLOBAL_AGENT_HTTPS_PROXY="${http_proxy}"
+      fi
     
       sudo npm install
       npm run dist
     
       cp -r --parents dist/linux-unpacked/* $SNAPCRAFT_PRIME/
+      cp netflix-snap.desktop /usr/share/applications/netflix-snap.desktop
 
 
 apps:
   netflix-viewer:
     extensions: [gnome-3-34]
-    desktop: meta/netflix-snap.desktop
-    command:  ./netflix-viewer --no-sandbox  # desktop-application netflix-viewer/netflix-viewer --no-sandbox #$SNAPCRAFT_PART_INSTALL/netflix-viewer --no-sandbox
+    desktop: /usr/share/applications/netflix-snap.desktop
+    command:  ./netflix-viewer --no-sandbox 
     plugs:
     - desktop
     - desktop-legacy
