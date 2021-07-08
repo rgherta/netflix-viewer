@@ -10,8 +10,6 @@ icon: app/icon.png
 architectures:
   - build-on: amd64
     run-on: amd64
-  - build-on: arm64
-    run-on: arm64
 license: GPL-3.0
 
 grade: devel 
