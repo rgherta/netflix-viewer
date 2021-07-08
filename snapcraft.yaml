@@ -40,6 +40,10 @@ parts:
       #export ELECTRON_GET_USE_PROXY=true
 
     override-build: |
+      echo "Running override-build script"
+      echo "https_proxy: " $https_proxy
+      echo "http_proxy: " $http_proxy
+
       if [ -n "$http_proxy" ]; then
           export ELECTRON_GET_USE_PROXY=1
           export GLOBAL_AGENT_HTTP_PROXY="${http_proxy}"
