@@ -1,0 +1,24 @@
+{
+  "name": "netflix-viewer",
+  "description": "This is a simple linux app running netflix.com in a browser. The motivation is to have a standard Netflix app that desktop users can easily access and add to favourites. Castlab fork of electron was used to avoid WVVMP issues. ",
+  "version": "0.8.5",
+  "main": "./main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --linux snap"
+  },
+  "build": {
+    "linux": {
+      "target": [
+        "dir"
+      ]
+    },
+    "electronDownload": {
+      "mirror": "https://github.com/castlabs/electron-releases/releases/download/v"
+    }
+  },
+  "devDependencies": {
+    "electron": "github:castlabs/electron-releases#v13.1.5-wvvmp",
+    "electron-builder": "^22.11.7"
+  }
+}

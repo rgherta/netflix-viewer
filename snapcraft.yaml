@@ -1,0 +1,63 @@
+name: netflix-viewer 
+version: '0.6'
+summary: Netflix website as a linux application
+description: |
+  This is a simple linux app running netflix.com in a browser.
+  The motivation is to have a standard NetFlix app that Ubuntu desktop users
+  can easily access and add to favorites.
+
+icon: app/icon.png
+architectures:
+  - build-on: amd64
+    run-on: amd64
+  - build-on: arm64
+    run-on: arm64
+license: GPL-3.0
+
+grade: stable 
+confinement: strict 
+base: core18
+
+
+parts:
+  netflix-viewer:
+    source: app
+    plugin: nil
+    build-packages:
+    - curl
+    - git
+
+    stage-packages:
+    # - libasound2
+    # - libgconf-2-4
+    # - libx11-xcb1
+    # - libxss1
+    # - libxtst6
+    # - libxshmfence-dev
+     - libnss3
+     - libnspr4
+
+    override-build: |
+      curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+      apt-get install -y nodejs
+
+      sudo npm install
+      npm run dist
+    
+      cp -r --parents dist/linux-unpacked/* $SNAPCRAFT_PRIME/
+
+
+apps:
+  netflix-viewer:
+    extensions: [gnome-3-34]
+    command:  ./netflix-viewer --no-sandbox  # desktop-application netflix-viewer/netflix-viewer --no-sandbox #$SNAPCRAFT_PART_INSTALL/netflix-viewer --no-sandbox
+    plugs:
+    - desktop
+    - desktop-legacy
+    - wayland
+    - unity7
+    - alsa
+    - browser-support
+    - network
+    - opengl
+    - audio-playback
