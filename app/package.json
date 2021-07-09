@@ -14,7 +14,7 @@
       ]
     },
     "electronDownload": {
-      "mirror": "https://github.com/castlabs/electron-releases/releases/download/v"
+      "mirror": "https://140.82.121.4/castlabs/electron-releases/releases/download/v"
     }
   },
   "devDependencies": {
