@@ -46,10 +46,11 @@ parts:
           export GLOBAL_AGENT_HTTP_PROXY="${http_proxy}"
           export GLOBAL_AGENT_HTTPS_PROXY="${http_proxy}"
 
-          npm config set proxy $http_proxy
-          npm config set https-proxy $https_proxy
+          sudo npm config set proxy $http_proxy
+          sudo npm config set https-proxy $https_proxy
       fi
     
+      sudo npm install -g npm@7.19.1
       sudo npm install
       npm run dist
     
@@ -60,7 +61,7 @@ parts:
 apps:
   netflix-viewer:
     extensions: [gnome-3-34]
-    desktop: /usr/share/applications/netflix-snap.desktop
+    #desktop: /usr/share/applications/netflix-snap.desktop
     command:  ./netflix-viewer --no-sandbox 
     plugs:
     - desktop
