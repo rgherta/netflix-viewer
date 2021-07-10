@@ -54,10 +54,11 @@ parts:
       ls -la
       ping 8.8.8.8
       ls -la ~
-      mkdir ~/.npm
+      
       cat ~/.npmrc
-      sudo chown -R $(whoami) ~/.npm
-
+      npm config get prefix
+      mkdir ~/.npm
+      npm config set prefix ~/.npm
         
       npm install
       npm run dist
