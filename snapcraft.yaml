@@ -31,6 +31,7 @@ parts:
     build-packages:
     - curl
     - git
+    - ping
 
     stage-packages:
      - libnss3
