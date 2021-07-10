@@ -52,7 +52,7 @@ parts:
       fi
 
       ls -la
-      ping 8.8.8.8
+      ping -w 10 8.8.8.8
       ls -la ~
       
       cat ~/.npmrc
