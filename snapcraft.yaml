@@ -52,7 +52,7 @@ parts:
       fi
 
       ls -la
-      ping github.com
+      ping 8.8.8.8
       ls -la ~
       mkdir ~/.npm
       cat ~/.npmrc
