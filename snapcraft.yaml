@@ -50,7 +50,15 @@ parts:
           sudo npm config set https-proxy $https_proxy
       fi
     
+      sudo npm cache clean --force
       sudo npm install -g npm@7.19.1
+
+      sudo npm config set proxy $http_proxy
+      sudo npm config set https-proxy $https_proxy
+
+      ls -la
+
+        
       sudo npm install
       npm run dist
     
