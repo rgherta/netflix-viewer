@@ -54,6 +54,7 @@ parts:
       ping github.com
       ls -la ~
       mkdir ~/.npm
+      cat ~/.npmrc
       sudo chown -R $(whoami) ~/.npm
 
         
