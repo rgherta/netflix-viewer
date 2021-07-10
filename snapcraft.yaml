@@ -47,24 +47,15 @@ parts:
           export GLOBAL_AGENT_HTTP_PROXY="${http_proxy}"
           export GLOBAL_AGENT_HTTPS_PROXY="${http_proxy}"
 
+          npm config set prefix ~/.npm
           npm config set proxy $http_proxy
           npm config set https-proxy $https_proxy
       fi
 
-      ls -la
-      ls -la ~
-      
-      cat ~/.npmrc
-      npm config get prefix
-      mkdir ~/.npm
-      npm config set prefix ~/.npm
-        
       npm install
       npm run dist
     
       cp -r --parents dist/linux-unpacked/* $SNAPCRAFT_PRIME/
-      cp netflix-snap.desktop /usr/share/applications/netflix-snap.desktop
-
 
 apps:
   netflix-viewer:
