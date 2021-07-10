@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Netflix Viewer
+Comment=Sample snap
+Exec=netflix-viewer
+Terminal=false
+Type=Application
+Icon=${SNAP}/meta/gui/icon.png

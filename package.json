@@ -18,7 +18,7 @@
     }
   },
   "devDependencies": {
-    "electron": "github:castlabs/electron-releases#v13.1.5-wvvmp",
+    "electron": "github:castlabs/electron-releases#v14.0.0-wvvmp-beta.12",
     "electron-builder": "^22.11.7"
   }
 }

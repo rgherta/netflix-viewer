@@ -1,12 +1,12 @@
 name: netflix-viewer 
-version: '0.6'
+version: '0.9.0'
 summary: Netflix website as a linux application
 description: |
   This is a simple linux app running netflix.com in a browser.
   The motivation is to have a standard NetFlix app that Ubuntu desktop users
   can easily access and add to favorites.
 
-icon: app/icon.png
+icon: snap/gui/icon.png
 architectures:
   - build-on: amd64
     run-on: amd64
@@ -21,7 +21,7 @@ compression: lzo
 
 parts:
   netflix-viewer:
-    source: app
+    source: .
     plugin: nil
 
 
@@ -31,7 +31,6 @@ parts:
     build-packages:
     - curl
     - git
-    - ping
 
     stage-packages:
      - libnss3
@@ -39,29 +38,33 @@ parts:
 
     override-build: |
       echo "Running override-build script"
-      echo "https_proxy: " $https_proxy
-      echo "http_proxy: " $http_proxy
 
       if [ -n "$http_proxy" ]; then
+          echo "Add proxies"
+          echo "https_proxy: " $https_proxy
+          echo "http_proxy: " $http_proxy
+
           export ELECTRON_GET_USE_PROXY=1
           export GLOBAL_AGENT_HTTP_PROXY="${http_proxy}"
           export GLOBAL_AGENT_HTTPS_PROXY="${http_proxy}"
 
-          npm config set prefix ~/.npm
           npm config set proxy $http_proxy
           npm config set https-proxy $https_proxy
       fi
 
+      npm config set prefix ~/.npm
+      echo "When building locally use sudo for npm install"
       npm install
       npm run dist
-    
+      
+      
       cp -r --parents dist/linux-unpacked/* $SNAPCRAFT_PRIME/
 
 apps:
   netflix-viewer:
     extensions: [gnome-3-34]
-    #desktop: /usr/share/applications/netflix-snap.desktop
-    command:  ./netflix-viewer --no-sandbox 
+    desktop: $SNAPCRAFT_PROJECT_DIR/snap/gui/netflix-viewer.desktop
+    command:  dist/linux-unpacked/netflix-viewer --no-sandbox 
     plugs:
     - desktop
     - desktop-legacy

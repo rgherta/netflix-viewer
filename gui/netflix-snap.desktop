@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=netflix-viewer
-Comment=Netflix Viewer
-Exec=netflix-viewer
-Terminal=false
-Type=Application
-Icon=${SNAP}/meta/icon.png
