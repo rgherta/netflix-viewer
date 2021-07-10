@@ -51,7 +51,9 @@ parts:
       fi
 
       ls -la
+      ping github.com
       ls -la ~
+      mkdir ~/.npm
       sudo chown -R $(whoami) ~/.npm
 
         
