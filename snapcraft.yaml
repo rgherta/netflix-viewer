@@ -49,17 +49,13 @@ parts:
           sudo npm config set proxy $http_proxy
           sudo npm config set https-proxy $https_proxy
       fi
-    
-      sudo npm cache clean --force
-      sudo npm install -g npm@7.19.1
-
-      sudo npm config set proxy $http_proxy
-      sudo npm config set https-proxy $https_proxy
 
       ls -la
+      ls -la ~
+      sudo chown -R $(whoami) ~/.npm
 
         
-      sudo npm install
+      npm install
       npm run dist
     
       cp -r --parents dist/linux-unpacked/* $SNAPCRAFT_PRIME/
