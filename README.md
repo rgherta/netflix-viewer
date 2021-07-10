@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="snap/gui/icon.png" alt="[Project]">
+ <img src="https://avatars1.githubusercontent.com/u/29598503?v=3&s=256" alt="[Project]">
   <br />
   Netflix Viewer
 </h1>
@@ -44,7 +44,7 @@ snapcraft login
 snapcraft upload --release=stable dist/netflix-viewer_X.X.X_amd64.snap
 ```
 
-## Local installation using Snapcraft
+## Local installation using Snapcraft  
 
 Make sure you have snapcraft installed  
 
@@ -63,11 +63,12 @@ snapcraft upload --release=candidate netflix-viewer_0.9.0_amd64.snap
 
 
    
-    
+## Screenshot
 
+<img alt="screenshot" src="screenshot.png" />
    
 
-
+<br /><br /><br /><br />
 
 
 ## Remaining tasks
