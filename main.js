@@ -2,9 +2,11 @@
 const electron = require('electron');
 const { app, BrowserView, BrowserWindow } = electron;
 const HOMEPAGE = 'https://www.netflix.com/';
+const path = require('path');
 
+   app.on('widevine-ready', (version, lastVersion) => {
 
-    app.on('widevine-ready', (version, lastVersion) => {
+   // app.whenReady().then(() => {
 
         if (null !== lastVersion) {
             console.log('Widevine ' + version + ', upgraded from ' + lastVersion + ', is ready to be used!')
@@ -16,10 +18,13 @@ const HOMEPAGE = 'https://www.netflix.com/';
         window = new BrowserWindow({
             width: 1200,
             height: 900,
+            fullscreenable: true,
             icon: __dirname + '/icon.png',
+            autoHideMenuBar: true,
             webPreferences: {
               contextIsolation: true,
               plugins: true,
+              preload: path.join(__dirname, 'preload.js'),
             },
             plugins: true
         });
@@ -36,7 +41,6 @@ const HOMEPAGE = 'https://www.netflix.com/';
         });
 
     })
-
 
   
     app.on('widevine-update-pending', (currentVersion, pendingVersion) => {

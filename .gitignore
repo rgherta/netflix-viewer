@@ -11,3 +11,5 @@ __pycache__
 *_source.tar.bz2
 snap/.snapcraft
 node_modules
+
+dist
