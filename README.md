@@ -107,7 +107,7 @@ upstream so Netflix Viewer can authoritatively publish future releases.
   - [ ] Ask the Snap Advocacy team to celebrate the snap - [link]()
 
 
-[UPDATE] Snap made private. Waiting answer from Netflix regarding copyright. Until then article 4.2 of snapcraft rulea apply.
+[UPDATE] Snap made private. Waiting answer from Netflix regarding copyright. Until then article 4.2 of snapcraft rules apply.
 
 If you have any questions, [post in the Snapcraft forum](https://forum.snapcraft.io).
 
